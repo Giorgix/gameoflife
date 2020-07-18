@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="./patterns.js" defer></script>
+    <script src="./game.js" defer></script>
+    <script src="./app.js" defer></script>
+    <title>Conway's Game of Life</title>
+</head>
+<body class="container">
+    <h1 class="display-4 text-center">Conway's Game of Life</h1>
+    <div class="row mb-2">
+        <div class="card">
+            <div class="card-header">
+                Simulation setup. Press CREATE SIMULATION to use default values.
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col">
+                        <form id="initForm">
+                            <div class="form-row">
+                                <div class="form-group col-6 col-md-3">
+                                    <label for="size">Height/Width in px</label>
+                                    <input class="form-control" type="number" name="size" id="size" placeholder="600">
+                                    <small id="sizeHelp" class="form-text text-muted">By default will be the container width</small>
+                                </div>
+                                <div class="form-group col-6 col-md-3">
+                                    <label for="fps">FPS for rendering</label>
+                                    <input class="form-control" type="number" name="fps" id="fps" placeholder="30"/>
+                                    <small id="fpsHelp" class="form-text text-muted">Number of frames rendered per second. Higher number = faster render speed.</small>
+                                </div>
+                                <div class="form-group col-6 col-md-3">
+                                    <label for="offset">Grid offset</label>
+                                    <input class="form-control" type="number" name="offset" id="offset" placeholder="60">
+                                    <small id="offsetHelp" class="form-text text-muted">Offset to let cells expand. By default will be 10% of the size</small>
+                                </div>
+                                <div class="form-group col-6 col-md-3">
+                                    <label for="pattern">Initial pattern</label>
+                                    <select name="pattern" class="custom-select" id="pattern">
+                                        <option value="random">Random</option>
+                                        <option value="glider gun">Glider gun</option>
+                                        <option value="double barreled">Double Barreled Gun</option>
+                                        <option value="two engine ship">2-engine Cordership</option>
+                                        <option value="copperhead">Copperhead spaceship</option>
+                                        <option value="weekender">Weekender spaceship</option>
+                                    </select>
+                                    <small id="patternHelp" class="form-text text-muted">Initial pattern to set the state of the cells. By default will be a random initial state.</small>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">CREATE SIMULATION</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-2" id="controls" style="display: none;">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center">Simulation</h2>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                Simulation Controls
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-6">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-success" onclick="game.start()">Start</button>
+                            <button type="button" class="btn btn-danger" onclick="game.reset()">Reset</button>
+                            </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-info" onclick="game.play()">Play</button>
+                            <button type="button" class="btn btn-dark" onclick="game.pause()">Pause</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
